@@ -34,7 +34,6 @@ import { Route as FaPatientReviewsRouteImport } from './routes/fa_.patient-revie
 import { Route as FaServicesRouteImport } from './routes/fa_.services'
 import { Route as AuthenticatedEditIndexRouteImport } from './routes/_authenticated/edit.index'
 import { Route as AuthenticatedEditSplatRouteImport } from './routes/_authenticated/edit.$'
-import { Route as ApiPublicSiteImageSplatRouteImport } from './routes/api/public/site-image/$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -160,11 +159,6 @@ const AuthenticatedEditSplatRoute = AuthenticatedEditSplatRouteImport.update({
   path: '/edit/$',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const ApiPublicSiteImageSplatRoute = ApiPublicSiteImageSplatRouteImport.update({
-  id: '/api/public/site-image/$',
-  path: '/api/public/site-image/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -191,7 +185,6 @@ export interface FileRoutesByFullPath {
   '/fa/services': typeof FaServicesRoute
   '/edit/$': typeof AuthenticatedEditSplatRoute
   '/edit/': typeof AuthenticatedEditIndexRoute
-  '/api/public/site-image/$': typeof ApiPublicSiteImageSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -218,7 +211,6 @@ export interface FileRoutesByTo {
   '/fa/services': typeof FaServicesRoute
   '/edit/$': typeof AuthenticatedEditSplatRoute
   '/edit': typeof AuthenticatedEditIndexRoute
-  '/api/public/site-image/$': typeof ApiPublicSiteImageSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -247,7 +239,6 @@ export interface FileRoutesById {
   '/fa_/services': typeof FaServicesRoute
   '/_authenticated/edit/$': typeof AuthenticatedEditSplatRoute
   '/_authenticated/edit/': typeof AuthenticatedEditIndexRoute
-  '/api/public/site-image/$': typeof ApiPublicSiteImageSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -276,7 +267,6 @@ export interface FileRouteTypes {
     | '/fa/services'
     | '/edit/$'
     | '/edit/'
-    | '/api/public/site-image/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -303,7 +293,6 @@ export interface FileRouteTypes {
     | '/fa/services'
     | '/edit/$'
     | '/edit'
-    | '/api/public/site-image/$'
   id:
     | '__root__'
     | '/'
@@ -331,7 +320,6 @@ export interface FileRouteTypes {
     | '/fa_/services'
     | '/_authenticated/edit/$'
     | '/_authenticated/edit/'
-    | '/api/public/site-image/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -358,7 +346,6 @@ export interface RootRouteChildren {
   FaGalleryRoute: typeof FaGalleryRoute
   FaPatientReviewsRoute: typeof FaPatientReviewsRoute
   FaServicesRoute: typeof FaServicesRoute
-  ApiPublicSiteImageSplatRoute: typeof ApiPublicSiteImageSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -538,13 +525,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedEditSplatRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/api/public/site-image/$': {
-      id: '/api/public/site-image/$'
-      path: '/api/public/site-image/$'
-      fullPath: '/api/public/site-image/$'
-      preLoaderRoute: typeof ApiPublicSiteImageSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -585,7 +565,6 @@ const rootRouteChildren: RootRouteChildren = {
   FaGalleryRoute: FaGalleryRoute,
   FaPatientReviewsRoute: FaPatientReviewsRoute,
   FaServicesRoute: FaServicesRoute,
-  ApiPublicSiteImageSplatRoute: ApiPublicSiteImageSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
 import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-import { supabase } from "@/integrations/supabase/client";
-import { saveSiteContent, uploadSiteImage } from "@/lib/cms.functions";
+import { db } from "@/lib/backend";
+import { saveSiteContent, uploadSiteImage } from "@/lib/cms-store";
 import { siteContentQueryOptions } from "@/lib/site-content";
 import {
   REELS_TEXT_KEY,
@@ -49,26 +48,14 @@ export function livePath(lang: Lang, page: Page): string {
   return `${langPart}${pagePart}` || "/";
 }
 
-function fileToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = String(reader.result);
-      resolve(result.slice(result.indexOf(",") + 1));
-    };
-    reader.onerror = () => reject(new Error("Could not read the file"));
-    reader.readAsDataURL(file);
-  });
-}
-
 export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   // Re-reading the saved content here means the editor re-attaches itself to
   // the freshly rendered markup after every save, instead of going dead.
   const { data: content } = useSuspenseQuery(siteContentQueryOptions);
-  const save = useServerFn(saveSiteContent);
-  const upload = useServerFn(uploadSiteImage);
+  const save = saveSiteContent;
+  const upload = uploadSiteImage;
 
   const [dirtyTextCount, setDirtyTextCount] = useState(0);
   const [dirtyImageCount, setDirtyImageCount] = useState(0);
@@ -143,6 +130,8 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
       pick(event.currentTarget as HTMLElement);
     };
 
+    const buttonTargets = new Map<HTMLElement, HTMLElement>();
+
     targets.forEach((target) => {
       const button = document.createElement("button");
       button.type = "button";
@@ -163,9 +152,34 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
       host.appendChild(button);
       hosts.push(host);
       buttons.push(button);
+      buttonTargets.set(button, target);
     });
 
+    // Overlays (gradients, links, decorative layers) can swallow clicks before they
+    // reach the picture or its badge, so resolve the click by what sits under the pointer.
+    const onDocumentClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0) return;
+      const stack = document.elementsFromPoint(event.clientX, event.clientY) as HTMLElement[];
+      if (stack.some((el) => el.closest?.(".cms-toolbar"))) return;
+      const badge = stack
+        .map((el) => el.closest?.(".cms-image-button") as HTMLElement | null)
+        .find((el): el is HTMLElement => Boolean(el));
+      const hostTarget = stack
+        .map((el) => el.closest?.("[data-cms-img]") as HTMLElement | null)
+        .find((el): el is HTMLElement => Boolean(el));
+      const overText = stack.some((el) => el.closest?.("[data-cms-key]"));
+      const target = (badge ? buttonTargets.get(badge) : undefined) ?? hostTarget;
+      if (!target) return;
+      if (!badge && overText) return;
+      event.preventDefault();
+      event.stopPropagation();
+      pick(target);
+    };
+
+    document.addEventListener("click", onDocumentClick, true);
+
     return () => {
+      document.removeEventListener("click", onDocumentClick, true);
       buttons.forEach((b) => b.remove());
       hosts.forEach((h) => h.classList.remove("cms-image-host", "cms-image-host--rel"));
       targets.forEach((t) => {
@@ -173,6 +187,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
         t.removeEventListener("click", onTargetClick);
       });
     };
+
   }, [lang, page, content]);
 
 
@@ -185,10 +200,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
 
       setUploading(true);
       try {
-        const dataBase64 = await fileToBase64(file);
-        const { url, servable } = await upload({
-          data: { filename: file.name, contentType: file.type, dataBase64 },
-        });
+        const { url } = await upload(file);
         if (target.tagName === "IMG") {
           (target as HTMLImageElement).src = url;
         } else {
@@ -198,13 +210,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
         target.classList.add("cms-dirty");
         dirtyImages.current.set(key, url);
         setDirtyImageCount(dirtyImages.current.size);
-        if (servable) {
-          toast.success("Image replaced. Remember to save.");
-        } else {
-          toast.warning(
-            "Image uploaded, but visitors cannot see it yet: the backend is not fully connected.",
-          );
-        }
+        toast.success("Image replaced. Remember to save.");
       } catch (error) {
         toast.error(error instanceof Error ? error.message : "Could not upload the image");
       } finally {
@@ -222,9 +228,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
   const saveReels = useCallback(
     async (next: string[]) => {
       const value = serializeReelList(next);
-      await save({
-        data: { texts: [{ lang: "en" as Lang, key: REELS_TEXT_KEY, value }], images: [] },
-      });
+      await save({ texts: [{ lang: "en" as Lang, key: REELS_TEXT_KEY, value }], images: [] });
       // Show the new list straight away, then refresh from the server.
       queryClient.setQueryData(siteContentQueryOptions.queryKey, (prev?: SiteContent) =>
         prev
@@ -298,9 +302,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
   const saveReviews = useCallback(
     async (next: typeof reviews) => {
       const value = serializeReviewList(next);
-      await save({
-        data: { texts: [{ lang: "en" as Lang, key: REVIEWS_TEXT_KEY, value }], images: [] },
-      });
+      await save({ texts: [{ lang: "en" as Lang, key: REVIEWS_TEXT_KEY, value }], images: [] });
       queryClient.setQueryData(siteContentQueryOptions.queryKey, (prev?: SiteContent) =>
         prev
           ? {
@@ -378,10 +380,8 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
     setSaving(true);
     try {
       await save({
-        data: {
-          texts: Array.from(dirtyText.current.values()),
-          images: Array.from(dirtyImages.current.entries()).map(([key, url]) => ({ key, url })),
-        },
+        texts: Array.from(dirtyText.current.values()),
+        images: Array.from(dirtyImages.current.entries()).map(([key, url]) => ({ key, url })),
       });
       dirtyText.current.clear();
       dirtyImages.current.clear();
@@ -407,7 +407,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
   const handleSignOut = async () => {
     await queryClient.cancelQueries();
     queryClient.clear();
-    await supabase.auth.signOut();
+    await db.auth.signOut();
     void navigate({ to: "/admin/login", replace: true });
   };
 
