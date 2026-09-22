@@ -4,12 +4,12 @@ import reviewsBodyHtml from "../../legacy/reviews-body.html?raw";
 import servicesBodyHtml from "../../legacy/services-body.html?raw";
 import contactBodyHtml from "../../legacy/contact-body.html?raw";
 import bodyHtml from "../../legacy/index-body.html?raw";
-import siteLogoAsset from "../../assets/dr-arman-logo-transparent.png.asset.json";
 
 import { ar } from "./ar";
 import { en } from "./en";
 import { fa } from "./fa";
-const SITE_LOGO_URL = siteLogoAsset.url;
+// Plain static file so the logo loads on any host (Lovable, Vercel, etc.).
+const SITE_LOGO_URL = "/legacy/img/dr-arman-logo.png";
 
 export type Lang = "en" | "ar" | "fa";
 export type Page = "home" | "about" | "services" | "gallery" | "reviews" | "contact";
