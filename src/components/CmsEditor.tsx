@@ -200,9 +200,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
   const saveReels = useCallback(
     async (next: string[]) => {
       const value = serializeReelList(next);
-      await save({
-        data: { texts: [{ lang: "en" as Lang, key: REELS_TEXT_KEY, value }], images: [] },
-      });
+      await save({ texts: [{ lang: "en" as Lang, key: REELS_TEXT_KEY, value }], images: [] });
       // Show the new list straight away, then refresh from the server.
       queryClient.setQueryData(siteContentQueryOptions.queryKey, (prev?: SiteContent) =>
         prev
@@ -276,9 +274,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
   const saveReviews = useCallback(
     async (next: typeof reviews) => {
       const value = serializeReviewList(next);
-      await save({
-        data: { texts: [{ lang: "en" as Lang, key: REVIEWS_TEXT_KEY, value }], images: [] },
-      });
+      await save({ texts: [{ lang: "en" as Lang, key: REVIEWS_TEXT_KEY, value }], images: [] });
       queryClient.setQueryData(siteContentQueryOptions.queryKey, (prev?: SiteContent) =>
         prev
           ? {
@@ -356,10 +352,8 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
     setSaving(true);
     try {
       await save({
-        data: {
-          texts: Array.from(dirtyText.current.values()),
-          images: Array.from(dirtyImages.current.entries()).map(([key, url]) => ({ key, url })),
-        },
+        texts: Array.from(dirtyText.current.values()),
+        images: Array.from(dirtyImages.current.entries()).map(([key, url]) => ({ key, url })),
       });
       dirtyText.current.clear();
       dirtyImages.current.clear();
@@ -385,7 +379,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
   const handleSignOut = async () => {
     await queryClient.cancelQueries();
     queryClient.clear();
-    await supabase.auth.signOut();
+    await db.auth.signOut();
     void navigate({ to: "/admin/login", replace: true });
   };
 
