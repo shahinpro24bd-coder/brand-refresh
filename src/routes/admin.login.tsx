@@ -1,11 +1,9 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
-import { createFirstEditor, getEditorSetupState } from "@/lib/admin-setup.functions";
+import { db } from "@/lib/backend";
 
 export const Route = createFileRoute("/admin/login")({
   ssr: false,
@@ -31,11 +29,14 @@ function usernameToEmail(username: string) {
 
 function AdminLogin() {
   const navigate = useNavigate();
-  const getSetupState = useServerFn(getEditorSetupState);
-  const createEditor = useServerFn(createFirstEditor);
   const { data: setupState, isLoading } = useQuery({
     queryKey: ["editor-setup-state"],
-    queryFn: () => getSetupState(),
+    queryFn: async () => {
+      const { data, error } = await db.rpc("has_any_admin");
+      if (error) throw new Error(error.message);
+      return { setupRequired: data !== true };
+    },
+    retry: 1,
   });
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -47,27 +48,38 @@ function AdminLogin() {
     setBusy(true);
     setError(null);
     const email = usernameToEmail(username);
+
     if (setupState?.setupRequired) {
-      const { error: setupError } = await createEditor({ data: { username, password } })
-        .then(() => ({ error: null }))
-        .catch((caught: unknown) => ({
-          error: caught instanceof Error ? caught.message : "Could not create the editor account.",
-        }));
-      if (setupError) {
+      if (password.length < 8) {
         setBusy(false);
-        setError(setupError);
+        setError("Please use a password with at least 8 characters.");
+        return;
+      }
+      const { error: signUpError } = await db.auth.signUp({ email, password });
+      if (signUpError && !/already registered/i.test(signUpError.message)) {
+        setBusy(false);
+        setError(signUpError.message);
         return;
       }
     }
-    const { error: signInError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    setBusy(false);
+
+    const { error: signInError } = await db.auth.signInWithPassword({ email, password });
     if (signInError) {
+      setBusy(false);
       setError("That username and password combination did not work.");
       return;
     }
+
+    if (setupState?.setupRequired) {
+      const { error: claimError } = await db.rpc("claim_first_admin");
+      if (claimError) {
+        setBusy(false);
+        setError(claimError.message);
+        return;
+      }
+    }
+
+    setBusy(false);
     void navigate({ to: "/edit", replace: true });
   };
 
