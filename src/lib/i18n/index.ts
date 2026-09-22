@@ -4,7 +4,7 @@ import reviewsBodyHtml from "../../legacy/reviews-body.html?raw";
 import servicesBodyHtml from "../../legacy/services-body.html?raw";
 import contactBodyHtml from "../../legacy/contact-body.html?raw";
 import bodyHtml from "../../legacy/index-body.html?raw";
-import siteLogoAsset from "../../assets/dr-arman-logo.jfif.asset.json";
+import siteLogoAsset from "../../assets/dr-arman-logo-transparent.png.asset.json";
 
 import { ar } from "./ar";
 import { en } from "./en";
