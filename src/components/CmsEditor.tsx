@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
 import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-import { supabase } from "@/integrations/supabase/client";
-import { saveSiteContent, uploadSiteImage } from "@/lib/cms.functions";
+import { db } from "@/lib/backend";
+import { saveSiteContent, uploadSiteImage } from "@/lib/cms-store";
 import { siteContentQueryOptions } from "@/lib/site-content";
 import {
   REELS_TEXT_KEY,
@@ -49,26 +48,14 @@ export function livePath(lang: Lang, page: Page): string {
   return `${langPart}${pagePart}` || "/";
 }
 
-function fileToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = String(reader.result);
-      resolve(result.slice(result.indexOf(",") + 1));
-    };
-    reader.onerror = () => reject(new Error("Could not read the file"));
-    reader.readAsDataURL(file);
-  });
-}
-
 export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   // Re-reading the saved content here means the editor re-attaches itself to
   // the freshly rendered markup after every save, instead of going dead.
   const { data: content } = useSuspenseQuery(siteContentQueryOptions);
-  const save = useServerFn(saveSiteContent);
-  const upload = useServerFn(uploadSiteImage);
+  const save = saveSiteContent;
+  const upload = uploadSiteImage;
 
   const [dirtyTextCount, setDirtyTextCount] = useState(0);
   const [dirtyImageCount, setDirtyImageCount] = useState(0);
@@ -185,10 +172,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
 
       setUploading(true);
       try {
-        const dataBase64 = await fileToBase64(file);
-        const { url, servable } = await upload({
-          data: { filename: file.name, contentType: file.type, dataBase64 },
-        });
+        const { url } = await upload(file);
         if (target.tagName === "IMG") {
           (target as HTMLImageElement).src = url;
         } else {
@@ -198,13 +182,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
         target.classList.add("cms-dirty");
         dirtyImages.current.set(key, url);
         setDirtyImageCount(dirtyImages.current.size);
-        if (servable) {
-          toast.success("Image replaced. Remember to save.");
-        } else {
-          toast.warning(
-            "Image uploaded, but visitors cannot see it yet: the backend is not fully connected.",
-          );
-        }
+        toast.success("Image replaced. Remember to save.");
       } catch (error) {
         toast.error(error instanceof Error ? error.message : "Could not upload the image");
       } finally {
