@@ -120,6 +120,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
     const hosts: HTMLElement[] = [];
 
     const pick = (target: HTMLElement) => {
+      console.log("DBG pick", target.dataset["cmsImg"], !!fileInputRef.current);
       pendingTarget.current = target;
       fileInputRef.current?.click();
     };
@@ -158,6 +159,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
     // Overlays (gradients, links, decorative layers) can swallow clicks before they
     // reach the picture or its badge, so resolve the click by what sits under the pointer.
     const onDocumentClick = (event: MouseEvent) => {
+      console.log("DBG doc click", event.defaultPrevented, event.button);
       if (event.defaultPrevented || event.button !== 0) return;
       const stack = document.elementsFromPoint(event.clientX, event.clientY) as HTMLElement[];
       if (stack.some((el) => el.closest?.(".cms-toolbar"))) return;
