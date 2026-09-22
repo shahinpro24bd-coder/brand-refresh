@@ -193,7 +193,7 @@
 
 .cms-image-button {
   position: absolute;
-  z-index: 40;
+  z-index: 2147483000;
   top: 8px;
   left: 8px;
   padding: 5px 10px;
