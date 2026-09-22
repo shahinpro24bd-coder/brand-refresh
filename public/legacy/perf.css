@@ -1,0 +1,90 @@
+/*
+ * Scroll-performance layer.
+ *
+ * 1. Reveal animations (formerly WOW.js + animate.css) as GPU-only
+ *    transform/opacity keyframes.
+ * 2. Containment hints so off-screen sections don't force layout/paint work
+ *    while the user scrolls.
+ */
+
+/* ---- Reveal on scroll ---- */
+.wow {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wow[data-revealed] {
+    opacity: 0;
+    will-change: opacity, transform;
+  }
+
+  .wow[data-revealed].fadeInLeft {
+    transform: translate3d(-40px, 0, 0);
+  }
+
+  .wow[data-revealed].fadeInRight {
+    transform: translate3d(40px, 0, 0);
+  }
+
+  .wow[data-revealed].is-revealed {
+    animation: legacyFadeIn 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .wow[data-revealed].fadeInLeft.is-revealed {
+    animation-name: legacyFadeInLeft;
+  }
+
+  .wow[data-revealed].fadeInRight.is-revealed {
+    animation-name: legacyFadeInRight;
+  }
+}
+
+.wow[data-revealed].is-revealed {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+@keyframes legacyFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes legacyFadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-40px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes legacyFadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(40px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- Repaint cost ---- */
+/* Blur is expensive to repaint on scroll; keep it off large scrolling cards. */
+@supports (backdrop-filter: blur(1px)) {
+  .video-L6 {
+    backdrop-filter: none;
+  }
+}
+
+/* Long text blocks can skip layout work for their own subtree. */
+.container-xxl {
+  contain: layout style;
+}

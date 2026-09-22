@@ -1,0 +1,68 @@
+/* Minimal right-to-left adjustments for Arabic and Persian.
+   The layout, colours and spacing stay identical to the English version. */
+html[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+  font-family: "Tahoma", "Segoe UI", "Work Sans", sans-serif;
+}
+
+html[dir="rtl"] .text-start {
+  text-align: right !important;
+}
+
+html[dir="rtl"] .text-end {
+  text-align: left !important;
+}
+
+html[dir="rtl"] .lang-switch,
+html[dir="rtl"] .navbar-nav,
+html[dir="rtl"] .nav-right-tools {
+  direction: rtl;
+}
+
+html[dir="rtl"] .owl-carousel {
+  direction: ltr;
+}
+
+html[dir="rtl"] .owl-carousel .owl-item {
+  direction: rtl;
+}
+
+html[dir="rtl"] ul,
+html[dir="rtl"] ol {
+  padding-right: 1.2rem;
+  padding-left: 0;
+}
+
+/* Stable mirrored layout for Arabic and Persian */
+html[dir="rtl"] .navbar-collapse .nav-right-tools { margin-left: 0; margin-right: auto; }
+html[dir="rtl"] .lang-switch, html[dir="rtl"] .nav-specialties { margin-right: 0; margin-left: 12px; }
+html[dir="rtl"] .navbar .navbar-nav .nav-link { letter-spacing: 0; }
+html[dir="rtl"] .hx-title, html[dir="rtl"] .site-footer-profile h2 { font-family: Tahoma, "Segoe UI", sans-serif; }
+html[dir="rtl"] .hx-stat { text-align: right; }
+html[dir="rtl"] .site-footer, html[dir="rtl"] .site-footer-column, html[dir="rtl"] .site-footer-practice { text-align: right; }
+html[dir="rtl"] .site-footer-column h3::after, html[dir="rtl"] .site-footer-practice h3::after { margin-left: auto; margin-right: 0; }
+html[dir="rtl"] .site-footer-column a:hover { transform: translateX(-4px); }
+html[dir="rtl"] .footer-book-link i, html[dir="rtl"] .appt-row .fa-chevron-right { transform: scaleX(-1); }
+html[dir="rtl"] .site-footer-bottom p:last-child { text-align: left; }
+html[dir="rtl"] .footer-language { direction: ltr; }
+html[dir="rtl"] .back-to-top { right: auto; left: 45px; }
+
+@media (max-width: 991.98px) {
+  html[dir="rtl"] .navbar-collapse .nav-right-tools { margin: 12px 0 0; }
+  html[dir="rtl"] .lang-switch, html[dir="rtl"] .nav-specialties { margin: 0 0 12px; }
+}
+@media (max-width: 767.98px) {
+  html[dir="rtl"] .site-footer-bottom p:last-child { text-align: center; }
+}
+@media (max-width: 575.98px) {
+  html[dir="rtl"] .back-to-top { left: 20px; }
+}
+
+/* modern navbar RTL mirroring */
+html[dir="rtl"] .container-fluid.bg-light.sticky-top .navbar-brand { border-radius: 14px 21px 21px 14px; }
+html[dir="rtl"] .container-fluid.bg-light.sticky-top > .navbar { padding: 6px 0 6px 8px !important; }
+@media (max-width: 991.98px) {
+  html[dir="rtl"] .container-fluid.bg-light.sticky-top > .navbar { padding: 6px 0 6px 10px !important; }
+  html[dir="rtl"] .container-fluid.bg-light.sticky-top .nav-right-tools { margin: 14px 0 0 !important; }
+}

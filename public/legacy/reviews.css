@@ -1,0 +1,27 @@
+/* Patient review videos: one card shape for landscape players (YouTube,
+   Facebook) and one for vertical players (Instagram reels). */
+.review-card {
+    height: auto;
+    background: #000;
+}
+
+.review-card iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+.review-card--wide {
+    aspect-ratio: 16 / 9;
+}
+
+.review-card--portrait {
+    aspect-ratio: 9 / 16;
+}
+
+@media (max-width: 575.98px) {
+    .review-card--portrait {
+        aspect-ratio: 9 / 16;
+    }
+}

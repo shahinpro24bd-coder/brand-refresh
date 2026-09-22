@@ -1,0 +1,343 @@
+
+
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">{{loading}}</span>
+        </div>
+    </div>
+
+    <!-- nav -->
+    <div class="container-fluid bg-light sticky-top p-0">
+        <nav class="navbar navbar-expand-lg navbar-light p-0">
+            <a href="{{home_url}}" class="navbar-brand py-2 px-3 me-0">
+                <img src="{{nav_logo}}" class="nav-logo-white"
+                    alt="{{logo_alt}}"
+                    style="height: 64px; width: auto; display: block; object-fit: contain;">
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse p-3" id="navbarCollapse">
+                <div class="navbar-nav mx-auto">
+                    <a href="{{home_url}}#home" class="nav-item nav-link">{{nav_home}}</a>
+                    <a href="{{about_url}}" class="nav-item nav-link">{{nav_about}}</a>
+                    <a href="{{services_url}}" class="nav-item nav-link active">{{nav_services}}</a>
+                    <a href="{{gallery_url}}" class="nav-item nav-link">{{nav_gallery}}</a>
+                    <a href="{{reviews_url}}" class="nav-item nav-link">{{nav_reviews}}</a>
+                    <a href="{{contact_url}}" class="nav-item nav-link">{{nav_contact}}</a>
+                </div>
+                <div class="nav-right-tools">
+                    <div class="lang-switch" id="langSwitch">
+                        <a href="{{services_en_url}}" class="lang-btn{{en_active}}" data-lang="en" hreflang="en">English</a>
+                        <a href="{{services_ar_url}}" class="lang-btn{{ar_active}}" data-lang="ar" hreflang="ar">العربية</a>
+                        <a href="{{services_fa_url}}" class="lang-btn{{fa_active}}" data-lang="fa" hreflang="fa">فارسی</a>
+                    </div>
+                    <a class="btn btn-sm btn-primary" href="{{wa_url}}" target="_blank" rel="noopener">{{btn_book}}</a>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+    <!-- nav -->
+
+
+
+<!-- services hero -->
+<div class="page-hero" id="servicesTop" style="background-image: url('{{page_hero_image}}');" data-cms-img="{{page_hero_image_key}}">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-inner">
+        <h1>{{services_hero_title}}</h1>
+        <div class="page-hero-crumb">
+            <a href="{{home_url}}">{{nav_home}}</a>
+            <span class="sep">/</span>
+            <span class="current">{{nav_services}}</span>
+        </div>
+    </div>
+</div>
+
+<!-- services -->
+   <div class="ser1" id="services">
+        <div class="ser2">
+            <div class="ser3">{{sv_kicker}}</div>
+             <h2 class="fw-bold mb-2" style="font-size: 2rem;">{{sv_title_a}} <span class="text-primary">{{sv_title_b}}</span></h2>
+
+            <div class="ser5">{{sv_sub}}</div>
+        </div>
+
+        <div class="ser6">
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" data-bg='/legacy/img/retina-vitreous-care.webp'></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv1_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv1_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv1_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" data-bg='/legacy/img/services/retinal-detachment.webp'></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv2_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv2_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv2_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" data-bg='/legacy/img/services/vitreous-surgery.webp'></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv3_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv3_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv3_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" data-bg='/legacy/img/services/diabetic-eye-disease.webp'></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv4_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv4_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv4_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" data-bg='/legacy/img/services/intravitreal-injections.webp'></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv5_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv5_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv5_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" data-bg='/legacy/img/services/retinal-laser.webp'></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv6_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv6_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv6_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" data-bg='/legacy/img/services/macular-hole.webp'></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv7_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv7_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv7_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" data-bg='/legacy/img/services/macular-degeneration.webp'></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv8_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv8_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv8_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" data-bg='/legacy/img/services/cataract-surgery.webp'></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv9_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv9_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv9_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" data-bg='/legacy/img/services/refractive-surgery.webp'></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv10_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv10_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv10_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" data-bg='/legacy/img/services/eye-examination.webp'></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv11_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv11_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv11_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<!-- services -->
+<!-- footer -->
+<footer class="site-footer">
+    <div class="site-footer-accent" aria-hidden="true"></div>
+    <div class="container site-footer-main">
+        <div class="site-footer-grid">
+            <section class="site-footer-profile" aria-labelledby="footer-doctor-name">
+                <a href="{{home_url}}" class="site-footer-logo">
+                    <img src="{{footer_logo}}" alt="{{logo_alt}}">
+                </a>
+                <h2 id="footer-doctor-name">{{doctor_name}}</h2>
+                <p class="site-footer-role">{{footer_role}}</p>
+                <p class="site-footer-meta">{{footer_credentials}}<br>{{footer_meta}}</p>
+                <div class="site-footer-actions">
+                    <a href="{{call_url}}" class="footer-action" aria-label="{{label_call}}">
+                        <span class="footer-action-icon"><i class="fas fa-phone-alt"></i></span>
+                        <span dir="ltr">{{action_phone}}</span>
+                    </a>
+                    <a href="{{wa_url}}" target="_blank" rel="noopener" class="footer-icon-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:dr.mowlazadeh@gmail.com" target="_blank" rel="noopener" class="footer-icon-link" aria-label="{{label_email}}"><i class="fas fa-envelope"></i></a>
+                </div>
+            </section>
+
+            <nav class="site-footer-column" aria-labelledby="footer-services-heading">
+                <h3 id="footer-services-heading">{{footer_services_title}}</h3>
+                <a href="{{services_url}}">{{sv1_title}}</a>
+                <a href="{{services_url}}">{{sv2_title}}</a>
+                <a href="{{services_url}}">{{sv4_title}}</a>
+                <a href="{{services_url}}">{{sv9_title}}</a>
+                <a href="{{services_url}}">{{sv10_title}}</a>
+            </nav>
+
+            <nav class="site-footer-column" aria-labelledby="footer-links-heading">
+                <h3 id="footer-links-heading">{{footer_links_title}}</h3>
+                <a href="{{home_url}}">{{nav_home}}</a>
+                <a href="{{about_url}}">{{nav_about}}</a>
+                <a href="{{services_url}}">{{nav_services}}</a>
+                <a href="{{gallery_url}}">{{nav_gallery}}</a>
+                <a href="{{reviews_url}}">{{nav_reviews}}</a>
+                <a href="{{contact_url}}">{{nav_contact}}</a>
+            </nav>
+
+            <section class="site-footer-practice" aria-labelledby="footer-practice-heading">
+                <span class="site-footer-kicker">Dubai · UAE</span>
+                <h3 id="footer-practice-heading">{{footer_practice_title}}</h3>
+                <div class="footer-practice-item">
+                    <span><i class="fas fa-hospital"></i></span>
+                    <div><strong>{{practice_clinic}}</strong><small>{{practice_role}}</small></div>
+                </div>
+                <div class="footer-practice-item">
+                    <span><i class="fas fa-map-marker-alt"></i></span>
+                    <div><strong>{{practice_city}}</strong><small>{{practice_licence_text}}</small></div>
+                </div>
+                <a href="{{wa_url}}" target="_blank" rel="noopener" class="footer-book-link">{{btn_book}} <i class="fas fa-arrow-right"></i></a>
+            </section>
+        </div>
+    </div>
+    <div class="site-footer-bottom">
+        <div class="container site-footer-bottom-inner">
+            <p>&copy; <a href="{{home_url}}">{{copyright_name}}</a>. {{rights}}</p>
+            <div class="footer-language" aria-label="Language">
+                <a href="{{en_url}}" class="{{en_active}}" hreflang="en">EN</a>
+                <a href="{{ar_url}}" class="{{ar_active}}" hreflang="ar">ع</a>
+                <a href="{{fa_url}}" class="{{fa_active}}" hreflang="fa">فا</a>
+            </div>
+            <p>{{designed_by}} <a href="{{home_url}}">Aurazone</a></p>
+        </div>
+    </div>
+</footer>
+<!-- footer -->
+
+    <a href="#servicesTop" class="btn btn-lg btn-primary btn-lg-square back-to-top" aria-label="{{back_to_top}}"><i class="fas fa-arrow-up"></i></a>
