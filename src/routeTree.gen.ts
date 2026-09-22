@@ -10,33 +10,355 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ArRouteImport } from './routes/ar'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaRouteImport } from './routes/fa'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as PatientReviewsRouteImport } from './routes/patient-reviews'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as ArAboutRouteImport } from './routes/ar_.about'
+import { Route as ArContactRouteImport } from './routes/ar_.contact'
+import { Route as ArGalleryRouteImport } from './routes/ar_.gallery'
+import { Route as ArPatientReviewsRouteImport } from './routes/ar_.patient-reviews'
+import { Route as ArServicesRouteImport } from './routes/ar_.services'
+import { Route as FaAboutRouteImport } from './routes/fa_.about'
+import { Route as FaContactRouteImport } from './routes/fa_.contact'
+import { Route as FaGalleryRouteImport } from './routes/fa_.gallery'
+import { Route as FaPatientReviewsRouteImport } from './routes/fa_.patient-reviews'
+import { Route as FaServicesRouteImport } from './routes/fa_.services'
+import { Route as AuthenticatedEditIndexRouteImport } from './routes/_authenticated/edit.index'
+import { Route as AuthenticatedEditSplatRouteImport } from './routes/_authenticated/edit.$'
+import { Route as ApiPublicSiteImageSplatRouteImport } from './routes/api/public/site-image/$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArRoute = ArRouteImport.update({
+  id: '/ar',
+  path: '/ar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaRoute = FaRouteImport.update({
+  id: '/fa',
+  path: '/fa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatientReviewsRoute = PatientReviewsRouteImport.update({
+  id: '/patient-reviews',
+  path: '/patient-reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArAboutRoute = ArAboutRouteImport.update({
+  id: '/ar_/about',
+  path: '/ar/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArContactRoute = ArContactRouteImport.update({
+  id: '/ar_/contact',
+  path: '/ar/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArGalleryRoute = ArGalleryRouteImport.update({
+  id: '/ar_/gallery',
+  path: '/ar/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArPatientReviewsRoute = ArPatientReviewsRouteImport.update({
+  id: '/ar_/patient-reviews',
+  path: '/ar/patient-reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArServicesRoute = ArServicesRouteImport.update({
+  id: '/ar_/services',
+  path: '/ar/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaAboutRoute = FaAboutRouteImport.update({
+  id: '/fa_/about',
+  path: '/fa/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaContactRoute = FaContactRouteImport.update({
+  id: '/fa_/contact',
+  path: '/fa/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaGalleryRoute = FaGalleryRouteImport.update({
+  id: '/fa_/gallery',
+  path: '/fa/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaPatientReviewsRoute = FaPatientReviewsRouteImport.update({
+  id: '/fa_/patient-reviews',
+  path: '/fa/patient-reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaServicesRoute = FaServicesRouteImport.update({
+  id: '/fa_/services',
+  path: '/fa/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedEditIndexRoute = AuthenticatedEditIndexRouteImport.update({
+  id: '/edit/',
+  path: '/edit/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedEditSplatRoute = AuthenticatedEditSplatRouteImport.update({
+  id: '/edit/$',
+  path: '/edit/$',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const ApiPublicSiteImageSplatRoute = ApiPublicSiteImageSplatRouteImport.update({
+  id: '/api/public/site-image/$',
+  path: '/api/public/site-image/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/about': typeof AboutRoute
+  '/ar': typeof ArRoute
+  '/contact': typeof ContactRoute
+  '/fa': typeof FaRoute
+  '/gallery': typeof GalleryRoute
+  '/patient-reviews': typeof PatientReviewsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/ar/about': typeof ArAboutRoute
+  '/ar/contact': typeof ArContactRoute
+  '/ar/gallery': typeof ArGalleryRoute
+  '/ar/patient-reviews': typeof ArPatientReviewsRoute
+  '/ar/services': typeof ArServicesRoute
+  '/fa/about': typeof FaAboutRoute
+  '/fa/contact': typeof FaContactRoute
+  '/fa/gallery': typeof FaGalleryRoute
+  '/fa/patient-reviews': typeof FaPatientReviewsRoute
+  '/fa/services': typeof FaServicesRoute
+  '/edit/$': typeof AuthenticatedEditSplatRoute
+  '/edit/': typeof AuthenticatedEditIndexRoute
+  '/api/public/site-image/$': typeof ApiPublicSiteImageSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/about': typeof AboutRoute
+  '/ar': typeof ArRoute
+  '/contact': typeof ContactRoute
+  '/fa': typeof FaRoute
+  '/gallery': typeof GalleryRoute
+  '/patient-reviews': typeof PatientReviewsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/ar/about': typeof ArAboutRoute
+  '/ar/contact': typeof ArContactRoute
+  '/ar/gallery': typeof ArGalleryRoute
+  '/ar/patient-reviews': typeof ArPatientReviewsRoute
+  '/ar/services': typeof ArServicesRoute
+  '/fa/about': typeof FaAboutRoute
+  '/fa/contact': typeof FaContactRoute
+  '/fa/gallery': typeof FaGalleryRoute
+  '/fa/patient-reviews': typeof FaPatientReviewsRoute
+  '/fa/services': typeof FaServicesRoute
+  '/edit/$': typeof AuthenticatedEditSplatRoute
+  '/edit': typeof AuthenticatedEditIndexRoute
+  '/api/public/site-image/$': typeof ApiPublicSiteImageSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/$': typeof SplatRoute
+  '/about': typeof AboutRoute
+  '/ar': typeof ArRoute
+  '/contact': typeof ContactRoute
+  '/fa': typeof FaRoute
+  '/gallery': typeof GalleryRoute
+  '/patient-reviews': typeof PatientReviewsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/ar_/about': typeof ArAboutRoute
+  '/ar_/contact': typeof ArContactRoute
+  '/ar_/gallery': typeof ArGalleryRoute
+  '/ar_/patient-reviews': typeof ArPatientReviewsRoute
+  '/ar_/services': typeof ArServicesRoute
+  '/fa_/about': typeof FaAboutRoute
+  '/fa_/contact': typeof FaContactRoute
+  '/fa_/gallery': typeof FaGalleryRoute
+  '/fa_/patient-reviews': typeof FaPatientReviewsRoute
+  '/fa_/services': typeof FaServicesRoute
+  '/_authenticated/edit/$': typeof AuthenticatedEditSplatRoute
+  '/_authenticated/edit/': typeof AuthenticatedEditIndexRoute
+  '/api/public/site-image/$': typeof ApiPublicSiteImageSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/$'
+    | '/about'
+    | '/ar'
+    | '/contact'
+    | '/fa'
+    | '/gallery'
+    | '/patient-reviews'
+    | '/robots.txt'
+    | '/services'
+    | '/sitemap.xml'
+    | '/admin/login'
+    | '/ar/about'
+    | '/ar/contact'
+    | '/ar/gallery'
+    | '/ar/patient-reviews'
+    | '/ar/services'
+    | '/fa/about'
+    | '/fa/contact'
+    | '/fa/gallery'
+    | '/fa/patient-reviews'
+    | '/fa/services'
+    | '/edit/$'
+    | '/edit/'
+    | '/api/public/site-image/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/$'
+    | '/about'
+    | '/ar'
+    | '/contact'
+    | '/fa'
+    | '/gallery'
+    | '/patient-reviews'
+    | '/robots.txt'
+    | '/services'
+    | '/sitemap.xml'
+    | '/admin/login'
+    | '/ar/about'
+    | '/ar/contact'
+    | '/ar/gallery'
+    | '/ar/patient-reviews'
+    | '/ar/services'
+    | '/fa/about'
+    | '/fa/contact'
+    | '/fa/gallery'
+    | '/fa/patient-reviews'
+    | '/fa/services'
+    | '/edit/$'
+    | '/edit'
+    | '/api/public/site-image/$'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/$'
+    | '/about'
+    | '/ar'
+    | '/contact'
+    | '/fa'
+    | '/gallery'
+    | '/patient-reviews'
+    | '/robots.txt'
+    | '/services'
+    | '/sitemap.xml'
+    | '/admin/login'
+    | '/ar_/about'
+    | '/ar_/contact'
+    | '/ar_/gallery'
+    | '/ar_/patient-reviews'
+    | '/ar_/services'
+    | '/fa_/about'
+    | '/fa_/contact'
+    | '/fa_/gallery'
+    | '/fa_/patient-reviews'
+    | '/fa_/services'
+    | '/_authenticated/edit/$'
+    | '/_authenticated/edit/'
+    | '/api/public/site-image/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  SplatRoute: typeof SplatRoute
+  AboutRoute: typeof AboutRoute
+  ArRoute: typeof ArRoute
+  ContactRoute: typeof ContactRoute
+  FaRoute: typeof FaRoute
+  GalleryRoute: typeof GalleryRoute
+  PatientReviewsRoute: typeof PatientReviewsRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
+  ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  ArAboutRoute: typeof ArAboutRoute
+  ArContactRoute: typeof ArContactRoute
+  ArGalleryRoute: typeof ArGalleryRoute
+  ArPatientReviewsRoute: typeof ArPatientReviewsRoute
+  ArServicesRoute: typeof ArServicesRoute
+  FaAboutRoute: typeof FaAboutRoute
+  FaContactRoute: typeof FaContactRoute
+  FaGalleryRoute: typeof FaGalleryRoute
+  FaPatientReviewsRoute: typeof FaPatientReviewsRoute
+  FaServicesRoute: typeof FaServicesRoute
+  ApiPublicSiteImageSplatRoute: typeof ApiPublicSiteImageSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +370,222 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar': {
+      id: '/ar'
+      path: '/ar'
+      fullPath: '/ar'
+      preLoaderRoute: typeof ArRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fa': {
+      id: '/fa'
+      path: '/fa'
+      fullPath: '/fa'
+      preLoaderRoute: typeof FaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patient-reviews': {
+      id: '/patient-reviews'
+      path: '/patient-reviews'
+      fullPath: '/patient-reviews'
+      preLoaderRoute: typeof PatientReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar_/about': {
+      id: '/ar_/about'
+      path: '/ar/about'
+      fullPath: '/ar/about'
+      preLoaderRoute: typeof ArAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar_/contact': {
+      id: '/ar_/contact'
+      path: '/ar/contact'
+      fullPath: '/ar/contact'
+      preLoaderRoute: typeof ArContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar_/gallery': {
+      id: '/ar_/gallery'
+      path: '/ar/gallery'
+      fullPath: '/ar/gallery'
+      preLoaderRoute: typeof ArGalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar_/patient-reviews': {
+      id: '/ar_/patient-reviews'
+      path: '/ar/patient-reviews'
+      fullPath: '/ar/patient-reviews'
+      preLoaderRoute: typeof ArPatientReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar_/services': {
+      id: '/ar_/services'
+      path: '/ar/services'
+      fullPath: '/ar/services'
+      preLoaderRoute: typeof ArServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fa_/about': {
+      id: '/fa_/about'
+      path: '/fa/about'
+      fullPath: '/fa/about'
+      preLoaderRoute: typeof FaAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fa_/contact': {
+      id: '/fa_/contact'
+      path: '/fa/contact'
+      fullPath: '/fa/contact'
+      preLoaderRoute: typeof FaContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fa_/gallery': {
+      id: '/fa_/gallery'
+      path: '/fa/gallery'
+      fullPath: '/fa/gallery'
+      preLoaderRoute: typeof FaGalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fa_/patient-reviews': {
+      id: '/fa_/patient-reviews'
+      path: '/fa/patient-reviews'
+      fullPath: '/fa/patient-reviews'
+      preLoaderRoute: typeof FaPatientReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fa_/services': {
+      id: '/fa_/services'
+      path: '/fa/services'
+      fullPath: '/fa/services'
+      preLoaderRoute: typeof FaServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/edit/': {
+      id: '/_authenticated/edit/'
+      path: '/edit'
+      fullPath: '/edit/'
+      preLoaderRoute: typeof AuthenticatedEditIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/edit/$': {
+      id: '/_authenticated/edit/$'
+      path: '/edit/$'
+      fullPath: '/edit/$'
+      preLoaderRoute: typeof AuthenticatedEditSplatRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/api/public/site-image/$': {
+      id: '/api/public/site-image/$'
+      path: '/api/public/site-image/$'
+      fullPath: '/api/public/site-image/$'
+      preLoaderRoute: typeof ApiPublicSiteImageSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedEditSplatRoute: typeof AuthenticatedEditSplatRoute
+  AuthenticatedEditIndexRoute: typeof AuthenticatedEditIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedEditSplatRoute: AuthenticatedEditSplatRoute,
+  AuthenticatedEditIndexRoute: AuthenticatedEditIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  SplatRoute: SplatRoute,
+  AboutRoute: AboutRoute,
+  ArRoute: ArRoute,
+  ContactRoute: ContactRoute,
+  FaRoute: FaRoute,
+  GalleryRoute: GalleryRoute,
+  PatientReviewsRoute: PatientReviewsRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
+  ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  ArAboutRoute: ArAboutRoute,
+  ArContactRoute: ArContactRoute,
+  ArGalleryRoute: ArGalleryRoute,
+  ArPatientReviewsRoute: ArPatientReviewsRoute,
+  ArServicesRoute: ArServicesRoute,
+  FaAboutRoute: FaAboutRoute,
+  FaContactRoute: FaContactRoute,
+  FaGalleryRoute: FaGalleryRoute,
+  FaPatientReviewsRoute: FaPatientReviewsRoute,
+  FaServicesRoute: FaServicesRoute,
+  ApiPublicSiteImageSplatRoute: ApiPublicSiteImageSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

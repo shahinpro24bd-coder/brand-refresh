@@ -1,0 +1,1335 @@
+
+
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">{{loading}}</span>
+        </div>
+    </div>
+
+    <!-- nav -->
+    <div class="container-fluid bg-light sticky-top p-0">
+        <nav class="navbar navbar-expand-lg navbar-light p-0">
+            <a href="{{home_url}}" class="navbar-brand py-2 px-3 me-0">
+                <img src="{{nav_logo}}" class="nav-logo-white"
+                    alt="{{logo_alt}}"
+                    style="height: 64px; width: auto; display: block; object-fit: contain;">
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse p-3" id="navbarCollapse">
+                <div class="navbar-nav mx-auto">
+                    <a href="#home" class="nav-item nav-link active">{{nav_home}}</a>
+                    <a href="{{about_url}}" class="nav-item nav-link">{{nav_about}}</a>
+                    <a href="{{services_url}}" class="nav-item nav-link">{{nav_services}}</a>
+                    <a href="{{gallery_url}}" class="nav-item nav-link">{{nav_gallery}}</a>
+                    <a href="{{reviews_url}}" class="nav-item nav-link">{{nav_reviews}}</a>
+                    <a href="{{contact_url}}" class="nav-item nav-link">{{nav_contact}}</a>
+                </div>
+                <div class="nav-right-tools">
+                    <div class="lang-switch" id="langSwitch">
+                        <a href="{{en_url}}" class="lang-btn{{en_active}}" data-lang="en" hreflang="en">English</a>
+                        <a href="{{ar_url}}" class="lang-btn{{ar_active}}" data-lang="ar" hreflang="ar">العربية</a>
+                        <a href="{{fa_url}}" class="lang-btn{{fa_active}}" data-lang="fa" hreflang="fa">فارسی</a>
+                    </div>
+                    <a class="btn btn-sm btn-primary" href="{{wa_url}}" target="_blank" rel="noopener">{{btn_book}}</a>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+    <!-- nav -->
+
+
+    <!-- hero -->
+    <section class="hx-hero" id="home">
+        <div class="hx-hero-glow" aria-hidden="true"></div>
+        <div class="hx-hero-inner">
+
+            <div class="hx-hero-copy">
+                <div class="hx-kickers">
+                    <div class="hx-eyebrow"><span class="hx-dot"></span> {{hero_badge1}}</div>
+                    <div class="hx-eyebrow"><span class="hx-check">✓</span> {{hero_badge2}}</div>
+                </div>
+
+                <h1 class="hx-title">
+                    <span class="hx-accent">{{hero_title}}</span>
+                </h1>
+
+                <p class="hx-lead">
+                    {{hero_lead}} <strong>{{hero_lead_strong}}</strong>
+                </p>
+
+                <div class="hx-cta">
+                    <a class="hx-btn hx-btn-primary" id="heroBtn1" href="{{wa_url}}" target="_blank" rel="noopener">{{hero_cta}} <span aria-hidden="true">→</span></a>
+                </div>
+
+                <div class="hx-stats" aria-label="{{hero_stats_label}}">
+                    <div class="hx-stat"><span class="hx-stat-icon" aria-hidden="true"><i class="fas fa-eye"></i></span><div><div class="hx-stat-num">{{stat1_num}}</div><div class="hx-stat-label">{{stat1_label}}</div></div></div>
+                    <div class="hx-stat"><span class="hx-stat-icon" aria-hidden="true"><i class="fas fa-user-md"></i></span><div><div class="hx-stat-num">{{stat2_num}}</div><div class="hx-stat-label">{{stat2_label}}</div></div></div>
+                    <div class="hx-stat"><span class="hx-stat-icon" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></span><div><div class="hx-stat-num">{{stat3_num}}</div><div class="hx-stat-label">{{stat3_label}}</div></div></div>
+                </div>
+            </div>
+
+            <div class="hx-hero-media">
+                <div class="hx-media-frame" id="heroImgWrap">
+                    <img id="heroSliderImg"
+                        src="{{hero_image}}"
+                        alt="{{doctor_photo_alt}}">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- hero -->
+
+
+    <!-- appointment -->
+    <div class="container-fluid py-5" id="contact" style="background: #f8f7f3;">
+        <div class="container">
+            <div class="text-center mb-5 wow fadeIn" data-wow-delay="0.1s">
+                <span class="d-inline-block px-4 py-2 mb-3 rounded-pill"
+                    style="background: rgba(191, 148, 86,0.12); color: var(--bs-primary); font-size: 0.78rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;">
+                    <i class="fas fa-calendar-check me-2"></i>{{appt_badge}}
+                </span>
+                <h2 class="fw-bold mb-2" style="font-size: 2rem;">{{appt_title_a}} <span class="text-primary">{{appt_title_b}}</span></h2>
+                <p class="text-muted mx-auto" style="max-width: 520px; font-size: 0.95rem;">
+                    {{appt_sub}}
+                </p>
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0.2s">
+                    <!-- WhatsApp -->
+                    <a href="{{wa_url}}" target="_blank" rel="noopener"
+                        class="appt-row d-flex align-items-center gap-3 p-3 mb-3 rounded-3 text-decoration-none"
+                        style="background:#fff; border-left:5px solid #25D366; box-shadow:0 3px 18px rgba(0,0,0,0.06); transition:transform 0.2s,box-shadow 0.2s;">
+                        <div class="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
+                            style="width:54px;height:54px;background:linear-gradient(135deg,#25D366,#128C7E);">
+                            <i class="fab fa-whatsapp text-white" style="font-size:1.5rem;"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div style="font-size:0.7rem;letter-spacing:1.2px;text-transform:uppercase;color:#999;font-weight:700;">{{label_whatsapp}}</div>
+                            <div style="font-size:1.05rem;font-weight:700;color:#222;" dir="ltr">{{action_phone}}</div>
+                        </div>
+                        <span class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"
+                            style="width:30px;height:30px;background:rgba(37,211,102,0.1);">
+                            <i class="fas fa-chevron-right" style="font-size:0.7rem;color:#25D366;"></i>
+                        </span>
+                    </a>
+
+                    <!-- Call -->
+                    <a href="{{call_url}}"
+                        class="appt-row d-flex align-items-center gap-3 p-3 mb-3 rounded-3 text-decoration-none"
+                        style="background:#fff; border-left:5px solid var(--bs-primary); box-shadow:0 3px 18px rgba(0,0,0,0.06); transition:transform 0.2s,box-shadow 0.2s;">
+                        <div class="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
+                            style="width:54px;height:54px;background:linear-gradient(135deg,var(--bs-primary),#D6B489);">
+                            <i class="fas fa-phone-alt text-white" style="font-size:1.25rem;"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div style="font-size:0.7rem;letter-spacing:1.2px;text-transform:uppercase;color:#999;font-weight:700;">{{label_call}}</div>
+                            <div style="font-size:1.05rem;font-weight:700;color:#222;" dir="ltr">{{action_phone}}</div>
+                        </div>
+                        <span class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"
+                            style="width:30px;height:30px;background:rgba(191, 148, 86,0.1);">
+                            <i class="fas fa-chevron-right" style="font-size:0.7rem;color:var(--bs-primary);"></i>
+                        </span>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:dr.mowlazadeh@gmail.com" target="_blank" rel="noopener"
+                        class="appt-row d-flex align-items-center gap-3 p-3 mb-4 rounded-3 text-decoration-none"
+                        style="background:#fff; border-left:5px solid #EA4335; box-shadow:0 3px 18px rgba(0,0,0,0.06); transition:transform 0.2s,box-shadow 0.2s;">
+                        <div class="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
+                            style="width:54px;height:54px;background:linear-gradient(135deg,#EA4335,#FBBC04);">
+                            <i class="fas fa-envelope text-white" style="font-size:1.2rem;"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div style="font-size:0.7rem;letter-spacing:1.2px;text-transform:uppercase;color:#999;font-weight:700;">{{label_email}}</div>
+                            <div style="font-size:0.9rem;font-weight:700;color:#222;" dir="ltr">dr.mowlazadeh@gmail.com</div>
+                        </div>
+                        <span class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"
+                            style="width:30px;height:30px;background:rgba(234,67,53,0.1);">
+                            <i class="fas fa-chevron-right" style="font-size:0.7rem;color:#EA4335;"></i>
+                        </span>
+                    </a>
+
+                    <!-- Practice Card -->
+<div class="rounded-3 overflow-hidden"
+    style="background:linear-gradient(135deg,#2a2a2a 0%,#3d3220 55%,#6b4f1a 100%);
+           box-shadow:0 10px 35px rgba(191, 148, 86, 0.28);">
+
+    <div class="p-4">
+
+        <!-- Card Header -->
+        <div class="d-flex align-items-center gap-2 mb-3">
+
+            <div class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"
+                style="width:36px;
+                       height:36px;
+                       background:rgba(255,255,255,0.15);">
+
+                <i class="fas fa-hospital text-white"
+                    style="font-size:0.9rem;"></i>
+
+            </div>
+
+            <span class="text-white fw-bold"
+                style="font-size:1rem;
+                       letter-spacing:0.5px;">
+
+                {{practice_title}}
+
+            </span>
+
+        </div>
+
+
+        <div class="d-flex align-items-start gap-2 mb-3">
+
+            <i class="fas fa-map-marker-alt mt-1 flex-shrink-0"
+                style="color:var(--bs-primary);
+                       font-size:0.85rem;">
+            </i>
+
+            <div>
+
+                <p class="mb-0 fw-semibold"
+                    style="color:#fff;
+                           font-size:0.9rem;">
+
+                    {{practice_clinic}}
+
+                </p>
+
+                <p class="mb-0"
+                    style="color:rgba(255,255,255,0.65);
+                           font-size:0.82rem;">
+
+                    {{practice_role}}
+
+                </p>
+
+                <p class="mb-0"
+                    style="color:rgba(255,255,255,0.65);
+                           font-size:0.82rem;">
+
+                    {{practice_city}}
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="d-flex align-items-start gap-2 mb-3">
+
+            <i class="fas fa-id-card mt-1 flex-shrink-0"
+                style="color:var(--bs-primary);
+                       font-size:0.85rem;">
+            </i>
+
+            <div>
+
+                <p class="mb-0 fw-semibold"
+                    style="color:#fff;
+                           font-size:0.9rem;">
+
+                    {{practice_licence}}
+
+                </p>
+
+                <p class="mb-0"
+                    style="color:rgba(255,255,255,0.65);
+                           font-size:0.82rem;">
+
+                    {{practice_licence_text}}
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a href="{{wa_url}}" target="_blank" rel="noopener"
+            class="btn btn-sm fw-bold px-4 py-2"
+            style="background:rgba(255,255,255,0.12);
+                   color:#fff;
+                   border:1.5px solid rgba(255,255,255,0.35);
+                   letter-spacing:0.5px;">
+
+            <i class="fas fa-calendar me-2"></i>
+
+            {{practice_cta}}
+
+        </a>
+
+    </div>
+
+</div>
+                </div>
+
+                <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.3s">
+                    <div class="rounded-3 overflow-hidden h-100"
+                        style="min-height:530px;box-shadow:0 12px 45px rgba(0,0,0,0.1);border:3px solid rgba(191, 148, 86,0.2);">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462073.6!2d54.9474!3d25.0762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai!5e0!3m2!1sen!2sae!4v1785246334609!5m2!1sen!2sae" width="100%"
+                            height="100%" style="border:0;min-height:530px;display:block;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            title="{{map_title}}">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- appointment -->
+
+
+    <!-- about section -->
+    <div class="container-fluid py-5" id="about">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <p class="font-dancing-script text-primary section-kicker">{{about_kicker}}</p>
+                    <h2 class="mb-4">{{about_title}}</h2>
+                    <p class="mb-4">{{about_p1}}</p>
+                    <p class="mb-4">{{about_p2}}</p>
+                    <p class="mb-4"><strong>{{about_p3_label}}</strong> {{about_p3}}</p>
+
+                   <div class="schedule-card">
+
+    <h3>
+        <i class="far fa-hospital me-2"></i>
+        {{about_card_title}}
+    </h3>
+
+    <div class="schedule-item">
+        <i class="fas fa-hospital"></i>
+        <span>
+            <strong>{{practice_clinic}}</strong><br>
+            {{practice_role}}<br>
+            {{practice_city}}
+        </span>
+    </div>
+
+    <div class="schedule-item">
+        <i class="fas fa-id-card"></i>
+        <span>
+            <strong>{{practice_licence}}</strong><br>
+            {{practice_licence_text}}
+        </span>
+    </div>
+
+</div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.2s">
+                    <img class="img-fluid mb-3 rounded" src="/legacy/img/dr-arman-molazadeh.webp" alt="{{doctor_photo_alt}}" style="width:100%; height:auto; object-fit:contain;">
+                    <a href="{{call_url}}" class="d-flex align-items-center bg-light rounded mb-3 text-decoration-none" aria-label="{{label_call}}: {{action_phone}}" style="border: 2px dashed rgba(191, 148, 86,0.25);">
+                        <div class="btn-square flex-shrink-0 bg-primary" style="width: 100px; height: 100px;">
+                            <i class="fa fa-phone fa-2x text-dark"></i>
+                        </div>
+                        <div class="px-3">
+                            <h3 dir="ltr">{{action_phone}}</h3>
+                            <span>{{call_caption}}</span>
+                        </div>
+                    </a>
+                    <div class="d-flex align-items-center rounded" style="border: 2px dashed rgba(191, 148, 86,0.25); background: linear-gradient(135deg, var(--bs-primary), #D6B489);">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0" style="width: 100px; height: 100px; background: rgba(255,255,255,0.15);">
+                            <i class="fas fa-eye fa-2x text-white"></i>
+                        </div>
+                        <div class="px-3">
+                            <h3 class="text-white mb-0">{{experience_years}}</h3>
+                            <span class="d-inline-block mt-1 px-3 py-1 rounded-pill" style="background: rgba(255,255,255,0.2); color: #fff; font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">{{experience_tag}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- services -->
+   <div class="ser1" id="services">
+        <div class="ser2">
+            <div class="ser3">{{sv_kicker}}</div>
+             <h2 class="fw-bold mb-2" style="font-size: 2rem;">{{sv_title_a}} <span class="text-primary">{{sv_title_b}}</span></h2>
+
+            <div class="ser5">{{sv_sub}}</div>
+        </div>
+
+        <div class="ser6">
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" style="background-image: url('/legacy/img/retina-vitreous-care.webp');"></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv1_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv1_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv1_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" style="background-image: url('/legacy/img/services/retinal-detachment.webp');"></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv2_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv2_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv2_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" style="background-image: url('/legacy/img/services/vitreous-surgery.webp');"></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv3_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv3_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv3_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" style="background-image: url('/legacy/img/services/diabetic-eye-disease.webp');"></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv4_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv4_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv4_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" style="background-image: url('/legacy/img/services/intravitreal-injections.webp');"></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv5_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv5_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv5_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" style="background-image: url('/legacy/img/services/retinal-laser.webp');"></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv6_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv6_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv6_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" style="background-image: url('/legacy/img/services/macular-hole.webp');"></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv7_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv7_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv7_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" style="background-image: url('/legacy/img/services/macular-degeneration.webp');"></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv8_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv8_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv8_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" style="background-image: url('/legacy/img/services/cataract-surgery.webp');"></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv9_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv9_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv9_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" style="background-image: url('/legacy/img/services/refractive-surgery.webp');"></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv10_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv10_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv10_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ser7">
+                <div class="ser8">
+                    <div class="ser9" style="background-image: url('/legacy/img/services/eye-examination.webp');"></div>
+                </div>
+                <div class="ser10">
+                    <div class="ser11">{{sv11_title}}</div>
+                    <div class="ser12"></div>
+                    <div class="ser13">{{sv11_desc}}</div>
+                    <div class="ser14">
+                        <div class="ser15">{{sv11_more}}</div>
+                    </div>
+                    <div class="ser16" onclick="toggleCard(this)">
+                        <div class="ser17">{{read_more}}</div>
+                        <div class="ser18"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<!-- services -->
+    <div class="video-L1">
+
+<!-- ================= SECTION HEADER ================= -->
+<div class="video-L2">
+
+    <span class="video-L3">
+        {{proc_kicker}}
+    </span>
+
+    <h2 class="video-L4">
+        {{proc_title}}
+    </h2>
+
+    <p class="video-L5">
+        {{proc_sub}}
+    </p>
+
+</div>
+
+
+<!-- ================= TWO COLUMN AREA ================= -->
+<div class="video-L6">
+
+
+    <!-- LEFT COLUMN -->
+    <div class="video-L7">
+
+        <div class="video-L8">
+
+            <img
+                src="/legacy/img/retinal-surgery-landscape.webp"
+                class="video-embed-iframe"
+                width="1280"
+                height="720"
+                loading="lazy"
+                alt="{{proc_image_alt}}"
+                style="width:100%;height:100%;object-fit:cover;display:block;border:none;">
+
+        </div>
+
+
+        <div class="video-L9">
+
+            <span class="video-L10">
+
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+                </svg>
+
+                {{proc_caption}}
+
+            </span>
+
+
+            <button
+                onclick="shareContent()"
+                class="video-L11"
+                aria-label="{{proc_share}}">
+
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+
+                </svg>
+
+                <span>{{proc_share}}</span>
+
+            </button>
+
+        </div>
+
+
+        <div class="video-L14">
+
+            <h3>
+                {{proc_l1_title}}
+            </h3>
+
+            <p>
+                {{proc_l1_p1}}
+            </p>
+
+            <p>
+                {{proc_l1_p2}}
+            </p>
+
+        </div>
+
+
+        <div class="video-L16">
+
+            <h4>
+                {{proc_l2_title}}
+            </h4>
+
+            <p>
+                {{proc_l2_p}}
+            </p>
+
+        </div>
+
+
+        <div class="video-L16">
+
+            <h4>
+                {{proc_l3_title}}
+            </h4>
+
+            <p>
+                {{proc_l3_p}}
+            </p>
+
+        </div>
+
+
+        <div class="stats-section">
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    01
+                </div>
+
+                <div class="stat-label">
+                    {{proc_focus1}}
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    02
+                </div>
+
+                <div class="stat-label">
+                    {{proc_focus2}}
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    03
+                </div>
+
+                <div class="stat-label">
+                    {{proc_focus3}}
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    04
+                </div>
+
+                <div class="stat-label">
+                    {{proc_focus4}}
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- RIGHT COLUMN -->
+    <div class="video-L12">
+
+
+        <div class="video-L13">
+
+            <span>
+                {{proc_r_kicker}}
+            </span>
+
+            <h3>
+                {{proc_r_title}}
+            </h3>
+
+            <p>
+                {{proc_r_sub}}
+            </p>
+
+            <div class="video-divider"></div>
+
+        </div>
+
+
+        <div class="video-L15">
+
+            <p class="title-p">
+                {{proc_r1_title}}
+            </p>
+
+            <p class="desc-p">
+                {{proc_r1_p}}
+            </p>
+
+        </div>
+
+
+        <div class="video-L16">
+
+            <h4>
+                {{proc_r2_title}}
+            </h4>
+
+            <p>
+                {{proc_r2_p}}
+            </p>
+
+        </div>
+
+
+        <div class="video-L16">
+
+            <h4>
+                {{proc_r3_title}}
+            </h4>
+
+            <p>
+                {{proc_r3_p}}
+            </p>
+
+        </div>
+
+
+        <div class="video-L16">
+
+            <h4>
+                {{proc_r4_title}}
+            </h4>
+
+            <p>
+                {{proc_r4_p}}
+            </p>
+
+        </div>
+
+
+        <div class="video-L16">
+
+            <h4>
+                {{proc_r5_title}}
+            </h4>
+
+            <p>
+                {{proc_r5_p}}
+            </p>
+
+        </div>
+
+
+        <!-- CTA -->
+        <div class="video-L17">
+
+            <a
+                href="{{wa_url}}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-instagram">
+
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+
+                {{cta_whatsapp}}
+
+            </a>
+
+
+            <a
+                href="{{wa_url}}"
+                target="_blank"
+                rel="noopener"
+                class="btn-appointment">
+
+                <svg
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    viewBox="0 0 24 24">
+
+                    <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+
+                </svg>
+
+            {{cta_consultation}}
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- qualifications -->
+
+<div class="container-fluid py-5">
+    <div class="container">
+
+    <div class="text-center mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <p class="font-dancing-script text-primary section-kicker">{{edu_kicker}}</p>
+        <h2 class="mb-3">{{edu_title}}</h2>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+            <div class="cred-custom-card">
+
+                <div class="cred-icon-title">
+                    <div class="cred-icon-box">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+
+                    <h5 class="cred-title">
+                        {{edu1_title}}
+                    </h5>
+                </div>
+
+                <div class="cred-body">
+                    <p>
+                        <strong>{{edu1_strong}}</strong>
+                    </p>
+
+                    <p>
+                        {{edu1_text}}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.2s">
+            <div class="cred-custom-card">
+
+                <div class="cred-icon-title">
+                    <div class="cred-icon-box">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+
+                    <h5 class="cred-title">
+                        {{edu2_title}}
+                    </h5>
+                </div>
+
+                <div class="cred-body">
+                    <p>
+                        <strong>{{edu2_strong}}</strong>
+                    </p>
+
+                    <p>
+                        {{edu2_text}}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+            <div class="cred-custom-card">
+
+                <div class="cred-icon-title">
+                    <div class="cred-icon-box">
+                        <i class="fas fa-award"></i>
+                    </div>
+
+                    <h5 class="cred-title">
+                        {{edu3_title}}
+                    </h5>
+                </div>
+
+                <div class="cred-body">
+                    <p>
+                        <strong>{{edu3_strong}}</strong>
+                    </p>
+
+                    <p>
+                        {{edu3_text}}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.4s">
+            <div class="cred-custom-card">
+
+                <div class="cred-icon-title">
+                    <div class="cred-icon-box">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+
+                    <h5 class="cred-title">
+                        {{edu4_title}}
+                    </h5>
+                </div>
+
+                <div class="cred-body">
+                    <p>
+                        <strong>{{edu4_strong}}</strong>
+                    </p>
+
+                    <p>
+                        {{edu4_text}}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+<!-- core expertise -->
+
+<div class="container-fluid py-5 bg-light">
+    <div class="container">
+
+
+    <div class="text-center mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <p class="font-dancing-script text-primary section-kicker">{{exp_kicker}}</p>
+        <h2 class="mb-3">{{exp_title}}</h2>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-6 col-lg-4 wow fadeIn">
+            <div class="qual-card">
+                <div class="qual-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div>
+                    <h6>{{exp1_title}}</h6>
+                    <p>{{exp1_text}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 wow fadeIn">
+            <div class="qual-card">
+                <div class="qual-icon">
+                    <i class="fas fa-syringe"></i>
+                </div>
+                <div>
+                    <h6>{{exp2_title}}</h6>
+                    <p>{{exp2_text}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 wow fadeIn">
+            <div class="qual-card">
+                <div class="qual-icon">
+                    <i class="fas fa-glasses"></i>
+                </div>
+                <div>
+                    <h6>{{exp3_title}}</h6>
+                    <p>{{exp3_text}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 wow fadeIn">
+            <div class="qual-card">
+                <div class="qual-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div>
+                    <h6>{{exp4_title}}</h6>
+                    <p>{{exp4_text}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 wow fadeIn">
+            <div class="qual-card">
+                <div class="qual-icon">
+                    <i class="fas fa-star-of-life"></i>
+                </div>
+                <div>
+                    <h6>{{exp5_title}}</h6>
+                    <p>{{exp5_text}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 wow fadeIn">
+            <div class="qual-card">
+                <div class="qual-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <div>
+                    <h6>{{exp6_title}}</h6>
+                    <p>{{exp6_text}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+<!-- professional experience -->
+
+<div class="container-fluid py-5" id="experience">
+    <div class="container">
+
+    <div class="text-center mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <p class="font-dancing-script text-primary section-kicker">{{career_kicker}}</p>
+        <h2 class="mb-3">{{career_title}}</h2>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+            <div class="membership-card">
+                <div class="membership-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="membership-body">
+                    <h5 class="membership-org">{{job1_org}}</h5>
+                    <p class="membership-name">{{job1_role}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.2s">
+            <div class="membership-card">
+                <div class="membership-icon">
+                    <i class="fas fa-hospital-user"></i>
+                </div>
+                <div class="membership-body">
+                    <h5 class="membership-org">{{job2_org}}</h5>
+                    <p class="membership-name">{{job2_role}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+            <div class="membership-card">
+                <div class="membership-icon">
+                    <i class="fas fa-clinic-medical"></i>
+                </div>
+                <div class="membership-body">
+                    <h5 class="membership-org">{{job3_org}}</h5>
+                    <p class="membership-name">{{job3_role}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.4s">
+            <div class="membership-card">
+                <div class="membership-icon">
+                    <i class="fas fa-procedures"></i>
+                </div>
+                <div class="membership-body">
+                    <h5 class="membership-org">{{job4_org}}</h5>
+                    <p class="membership-name">{{job4_role}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+            <div class="membership-card">
+                <div class="membership-icon">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <div class="membership-body">
+                    <h5 class="membership-org">{{job5_org}}</h5>
+                    <p class="membership-name">{{job5_role}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+
+
+
+<!-- ================= PRACTICE SECTION ================= -->
+
+<section class="chambers-section">
+
+    <div class="chambers-title">
+        <span>{{ch_kicker}}</span>
+        <h2>{{ch_title}}</h2>
+        <p>{{ch_sub}}</p>
+    </div>
+
+
+    <div class="chambers-grid">
+
+        <article class="chamber-card">
+
+            <div class="chamber-number" aria-hidden="true">01</div>
+
+            <div class="chamber-icon">
+                <i class="fas fa-hospital"></i>
+            </div>
+
+            <div class="chamber-heading">
+                <p>{{ch1_country}}</p>
+                <h3>{{ch1_city}}</h3>
+            </div>
+
+            <div class="chamber-info">
+                <p>
+                    <i class="fas fa-user-md"></i>
+                    <strong>{{ch1_label1}}</strong>
+                    {{ch1_value1}}
+                </p>
+
+                <p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <strong>{{ch1_label2}}</strong>
+                    {{ch1_value2}}
+                </p>
+            </div>
+
+
+        </article>
+
+
+        <article class="chamber-card">
+
+            <div class="chamber-number" aria-hidden="true">02</div>
+
+            <div class="chamber-icon">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+
+            <div class="chamber-heading">
+                <p>{{ch2_country}}</p>
+                <h3>{{ch2_city}}</h3>
+            </div>
+
+            <div class="chamber-info">
+                <a href="{{call_url}}" aria-label="{{ch2_label1}}: {{action_phone}}">
+                    <i class="fas fa-phone"></i>
+                    <strong>{{ch2_label1}}</strong>
+                    <span dir="ltr">{{action_phone}}</span>
+                </a>
+
+                <a href="mailto:dr.mowlazadeh@gmail.com" target="_blank" rel="noopener" aria-label="{{ch2_label2}}: dr.mowlazadeh@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                    <strong>{{ch2_label2}}</strong>
+                    <span dir="ltr">dr.mowlazadeh@gmail.com</span>
+                </a>
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+    <!-- surgical record -->
+    <div class="container-fluid py-5 bg-light">
+        <div class="container">
+            <div class="text-center wow fadeIn"><p class="font-dancing-script text-primary section-kicker">{{rec_kicker}}</p><h2 class="mb-5">{{rec_title}}</h2></div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 wow fadeIn"><div class="testimonial-card"><div class="tc-avatar"><i class="fas fa-eye"></i></div><div class="tc-quote">{{rec1_text}}</div><div class="tc-divider"></div><div class="tc-name">{{rec1_num}}</div><span class="tc-role">{{rec1_label}}</span></div></div>
+                <div class="col-md-6 col-lg-3 wow fadeIn"><div class="testimonial-card"><div class="tc-avatar"><i class="fas fa-syringe"></i></div><div class="tc-quote">{{rec2_text}}</div><div class="tc-divider"></div><div class="tc-name">{{rec2_num}}</div><span class="tc-role">{{rec2_label}}</span></div></div>
+                <div class="col-md-6 col-lg-3 wow fadeIn"><div class="testimonial-card"><div class="tc-avatar"><i class="fas fa-glasses"></i></div><div class="tc-quote">{{rec3_text}}</div><div class="tc-divider"></div><div class="tc-name">{{rec3_num}}</div><span class="tc-role">{{rec3_label}}</span></div></div>
+                <div class="col-md-6 col-lg-3 wow fadeIn"><div class="testimonial-card"><div class="tc-avatar"><i class="fas fa-clock"></i></div><div class="tc-quote">{{rec4_text}}</div><div class="tc-divider"></div><div class="tc-name">{{rec4_num}}</div><span class="tc-role">{{rec4_label}}</span></div></div>
+            </div>
+        </div>
+    </div>
+<!-- footer -->
+<footer class="site-footer">
+    <div class="site-footer-accent" aria-hidden="true"></div>
+    <div class="container site-footer-main">
+        <div class="site-footer-grid">
+            <section class="site-footer-profile" aria-labelledby="footer-doctor-name">
+                <a href="{{home_url}}" class="site-footer-logo">
+                    <img src="{{footer_logo}}" alt="{{logo_alt}}">
+                </a>
+                <h2 id="footer-doctor-name">{{doctor_name}}</h2>
+                <p class="site-footer-role">{{footer_role}}</p>
+                <p class="site-footer-meta">{{footer_credentials}}<br>{{footer_meta}}</p>
+                <div class="site-footer-actions">
+                    <a href="{{call_url}}" class="footer-action" aria-label="{{label_call}}">
+                        <span class="footer-action-icon"><i class="fas fa-phone-alt"></i></span>
+                        <span dir="ltr">{{action_phone}}</span>
+                    </a>
+                    <a href="{{wa_url}}" target="_blank" rel="noopener" class="footer-icon-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:dr.mowlazadeh@gmail.com" target="_blank" rel="noopener" class="footer-icon-link" aria-label="{{label_email}}"><i class="fas fa-envelope"></i></a>
+                </div>
+            </section>
+
+            <nav class="site-footer-column" aria-labelledby="footer-services-heading">
+                <h3 id="footer-services-heading">{{footer_services_title}}</h3>
+                <a href="{{services_url}}">{{sv1_title}}</a>
+                <a href="{{services_url}}">{{sv2_title}}</a>
+                <a href="{{services_url}}">{{sv4_title}}</a>
+                <a href="{{services_url}}">{{sv9_title}}</a>
+                <a href="{{services_url}}">{{sv10_title}}</a>
+            </nav>
+
+            <nav class="site-footer-column" aria-labelledby="footer-links-heading">
+                <h3 id="footer-links-heading">{{footer_links_title}}</h3>
+                <a href="{{home_url}}">{{nav_home}}</a>
+                <a href="{{about_url}}">{{nav_about}}</a>
+                <a href="{{services_url}}">{{nav_services}}</a>
+                <a href="{{gallery_url}}">{{nav_gallery}}</a>
+                <a href="{{reviews_url}}">{{nav_reviews}}</a>
+                <a href="{{contact_url}}">{{nav_contact}}</a>
+            </nav>
+
+            <section class="site-footer-practice" aria-labelledby="footer-practice-heading">
+                <span class="site-footer-kicker">Dubai · UAE</span>
+                <h3 id="footer-practice-heading">{{footer_practice_title}}</h3>
+                <div class="footer-practice-item">
+                    <span><i class="fas fa-hospital"></i></span>
+                    <div><strong>{{practice_clinic}}</strong><small>{{practice_role}}</small></div>
+                </div>
+                <div class="footer-practice-item">
+                    <span><i class="fas fa-map-marker-alt"></i></span>
+                    <div><strong>{{practice_city}}</strong><small>{{practice_licence_text}}</small></div>
+                </div>
+                <a href="{{wa_url}}" target="_blank" rel="noopener" class="footer-book-link">{{btn_book}} <i class="fas fa-arrow-right"></i></a>
+            </section>
+        </div>
+    </div>
+    <div class="site-footer-bottom">
+        <div class="container site-footer-bottom-inner">
+            <p>&copy; <a href="{{home_url}}">{{copyright_name}}</a>. {{rights}}</p>
+            <div class="footer-language" aria-label="Language">
+                <a href="{{en_url}}" class="{{en_active}}" hreflang="en">EN</a>
+                <a href="{{ar_url}}" class="{{ar_active}}" hreflang="ar">ع</a>
+                <a href="{{fa_url}}" class="{{fa_active}}" hreflang="fa">فا</a>
+            </div>
+            <p>{{designed_by}} <a href="{{home_url}}">Aurazone</a></p>
+        </div>
+    </div>
+</footer>
+<!-- footer -->
+
+    <a href="#home" class="btn btn-lg btn-primary btn-lg-square back-to-top" aria-label="{{back_to_top}}"><i class="fas fa-arrow-up"></i></a>

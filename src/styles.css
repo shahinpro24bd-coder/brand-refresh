@@ -142,3 +142,185 @@
     color: var(--color-foreground);
   }
 }
+
+/* ---- Inline page editor (admin only) ---- */
+.cms-edit-shell {
+  padding-bottom: 7rem;
+}
+
+.cms-loading {
+  padding: 4rem;
+  text-align: center;
+  font-family: system-ui, sans-serif;
+}
+
+.cms-editable[contenteditable="true"] {
+  outline: 1px dashed rgba(37, 99, 235, 0.55);
+  outline-offset: 2px;
+  border-radius: 2px;
+  cursor: text;
+  min-width: 1ch;
+}
+
+.cms-editable[contenteditable="true"]:hover {
+  outline-color: rgb(37, 99, 235);
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.cms-editable[contenteditable="true"]:focus {
+  outline: 2px solid rgb(37, 99, 235);
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.cms-dirty {
+  outline-color: rgb(202, 138, 4) !important;
+  box-shadow: 0 0 0 2px rgba(202, 138, 4, 0.35);
+}
+
+.cms-image-host--rel {
+  position: relative !important;
+}
+
+.cms-image-target {
+  outline: 2px dashed rgba(37, 99, 235, 0.5);
+  outline-offset: 2px;
+  cursor: pointer;
+}
+
+.cms-image-target:hover {
+  outline-color: rgb(37, 99, 235);
+}
+
+.cms-image-button {
+  position: absolute;
+  z-index: 40;
+  top: 8px;
+  left: 8px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.88);
+  color: #fff;
+  font: 500 12px/1.2 system-ui, sans-serif;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+  pointer-events: auto;
+}
+
+.cms-image-host:hover .cms-image-button,
+.cms-image-button:hover,
+.cms-image-button:focus-visible {
+  opacity: 1;
+}
+
+
+.cms-toolbar {
+  position: fixed;
+  z-index: 9999;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.96);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+  color: #fff;
+  font-family: system-ui, sans-serif;
+  max-width: calc(100vw - 24px);
+}
+
+.cms-toolbar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.cms-brand {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.cms-toolbar select,
+.cms-toolbar button,
+.cms-toolbar a {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 13px;
+  line-height: 1.2;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cms-toolbar select option {
+  color: #0f172a;
+}
+
+.cms-toolbar button:hover,
+.cms-toolbar a:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.cms-toolbar button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.cms-hint {
+  margin: 0;
+  font-size: 11px;
+  opacity: 0.75;
+}
+
+
+/* Video gallery editing */
+.cms-toolbar .cms-reel-input {
+  min-width: 260px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 13px;
+}
+
+.cms-toolbar .cms-reel-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.cms-edit-shell .reel-card {
+  position: relative;
+}
+
+/* The embed would swallow the clicks meant for the Remove badge. */
+.cms-edit-shell .reel-card iframe {
+  pointer-events: none;
+}
+
+.cms-reel-remove {
+  position: absolute;
+  z-index: 40;
+  top: 8px;
+  right: 8px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(190, 18, 60, 0.9);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.cms-reel-remove:hover,
+.cms-reel-remove:focus-visible {
+  background: rgb(190, 18, 60);
+}
