@@ -130,6 +130,8 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
       pick(event.currentTarget as HTMLElement);
     };
 
+    const buttonTargets = new Map<HTMLElement, HTMLElement>();
+
     targets.forEach((target) => {
       const button = document.createElement("button");
       button.type = "button";
@@ -150,9 +152,34 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
       host.appendChild(button);
       hosts.push(host);
       buttons.push(button);
+      buttonTargets.set(button, target);
     });
 
+    // Overlays (gradients, links, decorative layers) can swallow clicks before they
+    // reach the picture or its badge, so resolve the click by what sits under the pointer.
+    const onDocumentClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0) return;
+      const stack = document.elementsFromPoint(event.clientX, event.clientY) as HTMLElement[];
+      if (stack.some((el) => el.closest?.(".cms-toolbar"))) return;
+      const badge = stack
+        .map((el) => el.closest?.(".cms-image-button") as HTMLElement | null)
+        .find((el): el is HTMLElement => Boolean(el));
+      const hostTarget = stack
+        .map((el) => el.closest?.("[data-cms-img]") as HTMLElement | null)
+        .find((el): el is HTMLElement => Boolean(el));
+      const overText = stack.some((el) => el.closest?.("[data-cms-key]"));
+      const target = (badge ? buttonTargets.get(badge) : undefined) ?? hostTarget;
+      if (!target) return;
+      if (!badge && overText) return;
+      event.preventDefault();
+      event.stopPropagation();
+      pick(target);
+    };
+
+    document.addEventListener("click", onDocumentClick, true);
+
     return () => {
+      document.removeEventListener("click", onDocumentClick, true);
       buttons.forEach((b) => b.remove());
       hosts.forEach((h) => h.classList.remove("cms-image-host", "cms-image-host--rel"));
       targets.forEach((t) => {
@@ -160,6 +187,7 @@ export function CmsEditor({ lang, page }: { lang: Lang; page: Page }) {
         t.removeEventListener("click", onTargetClick);
       });
     };
+
   }, [lang, page, content]);
 
 
