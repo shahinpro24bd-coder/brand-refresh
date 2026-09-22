@@ -294,7 +294,16 @@ export function LegacyPage({
     // the editor tools); it opens the same page inside the editor instead.
     if (editMode) {
       const handleEditLinks = (event: MouseEvent) => {
-        const anchor = (event.target as HTMLElement | null)?.closest?.("a");
+        const element = event.target as HTMLElement | null;
+        // Editor controls win over link navigation, even inside a link.
+        if (
+          element?.closest?.(
+            ".cms-toolbar, .cms-image-button, [data-cms-img], [data-cms-key], [data-cms-reel-remove], [data-cms-review-remove]",
+          )
+        ) {
+          return;
+        }
+        const anchor = element?.closest?.("a");
         if (!anchor) return;
         event.preventDefault();
         event.stopPropagation();
